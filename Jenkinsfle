@@ -1,0 +1,15 @@
+node {
+  stage 'Checkout Code'
+  checkout scm
+  bat 'git submodule update --init'
+
+  stage 'copy build'
+  bat 'CopyNGBuild.bat -l \\192.168.33.101\US_Package\7.1a2 DEV'
+  
+  stage 'Install IE'
+  bat 'InstallBAT/StartInstall.bat 192.168.28.143 192.168.28.59 WIN-46K6OUA2E9M 27017 9200 d'
+  }
+
+  stage 'finish'
+  echo 'completed Installation'
+}
